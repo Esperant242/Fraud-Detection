@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction de Fraude</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .form-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .prediction-result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prédiction de Fraude</h1>
+    <form action="/predict" method="post">
+        <div class="form-container">
+            <!-- Colonne 1 -->
+            <div class="form-column">
+                <label for="V1">V1:</label>
+                <input type="text" id="V1" name="V1" placeholder="Entrez la valeur de V1">
+
+                <label for="V2">V2:</label>
+                <input type="text" id="V2" name="V2" placeholder="Entrez la valeur de V2">
+
+                <label for="V3">V3:</label>
+                <input type="text" id="V3" name="V3" placeholder="Entrez la valeur de V3">
+
+                <label for="V4">V4:</label>
+                <input type="text" id="V4" name="V4" placeholder="Entrez la valeur de V4">
+
+                <label for="V5">V5:</label>
+                <input type="text" id="V5" name="V5" placeholder="Entrez la valeur de V5">
+
+                <label for="V6">V6:</label>
+                <input type="text" id="V6" name="V6" placeholder="Entrez la valeur de V6">
+
+                <label for="V7">V7:</label>
+                <input type="text" id="V7" name="V7" placeholder="Entrez la valeur de V7">
+
+                <label for="V8">V8:</label>
+                <input type="text" id="V8" name="V8" placeholder="Entrez la valeur de V8">
+
+                <label for="V9">V9:</label>
+                <input type="text" id="V9" name="V9" placeholder="Entrez la valeur de V9">
+
+                <label for="V10">V10:</label>
+                <input type="text" id="V10" name="V10" placeholder="Entrez la valeur de V10">
+            </div>
+
+            <!-- Colonne 2 -->
+            <div class="form-column">
+                <label for="V11">V11:</label>
+                <input type="text" id="V11" name="V11" placeholder="Entrez la valeur de V11">
+
+                <label for="V12">V12:</label>
+                <input type="text" id="V12" name="V12" placeholder="Entrez la valeur de V12">
+
+                <label for="V13">V13:</label>
+                <input type="text" id="V13" name="V13" placeholder="Entrez la valeur de V13">
+
+                <label for="V14">V14:</label>
+                <input type="text" id="V14" name="V14" placeholder="Entrez la valeur de V14">
+
+                <label for="V15">V15:</label>
+                <input type="text" id="V15" name="V15" placeholder="Entrez la valeur de V15">
+
+                <label for="V16">V16:</label>
+                <input type="text" id="V16" name="V16" placeholder="Entrez la valeur de V16">
+
+                <label for="V17">V17:</label>
+                <input type="text" id="V17" name="V17" placeholder="Entrez la valeur de V17">
+
+                <label for="V18">V18:</label>
+                <input type="text" id="V18" name="V18" placeholder="Entrez la valeur de V18">
+
+                <label for="V19">V19:</label>
+                <input type="text" id="V19" name="V19" placeholder="Entrez la valeur de V19">
+
+                <label for="V20">V20:</label>
+                <input type="text" id="V20" name="V20" placeholder="Entrez la valeur de V20">
+            </div>
+
+            <!-- Colonne 3 -->
+            <div class="form-column">
+                <label for="V21">V21:</label>
+                <input type="text" id="V21" name="V21" placeholder="Entrez la valeur de V21">
+
+                <label for="V22">V22:</label>
+                <input type="text" id="V22" name="V22" placeholder="Entrez la valeur de V22">
+
+                <label for="V23">V23:</label>
+                <input type="text" id="V23" name="V23" placeholder="Entrez la valeur de V23">
+
+                <label for="V24">V24:</label>
+                <input type="text" id="V24" name="V24" placeholder="Entrez la valeur de V24">
+
+                <label for="V25">V25:</label>
+                <input type="text" id="V25" name="V25" placeholder="Entrez la valeur de V25">
+
+                <label for="V26">V26:</label>
+                <input type="text" id="V26" name="V26" placeholder="Entrez la valeur de V26">
+
+                <label for="V27">V27:</label>
+                <input type="text" id="V27" name="V27" placeholder="Entrez la valeur de V27">
+
+                <label for="V28">V28:</label>
+                <input type="text" id="V28" name="V28" placeholder="Entrez la valeur de V28">
+
+                <label for="Amount">Amount:</label>
+                <input type="text" id="Amount" name="Amount" placeholder="Entrez le montant">
+            </div>
+        </div>
+
+        <button type="submit">Prédire</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="prediction-result">
+        <h2>{{ prediction_text }}</h2>
+    </div>
+    {% endif %}
+</body>
+</html>
